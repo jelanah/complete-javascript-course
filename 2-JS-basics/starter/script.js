@@ -64,7 +64,7 @@ console.log(ageJohn);
 console.log(now / 10);
 
 // Logical operators
-var johnOlder = ageJoh ageMark;
+var johnOlder = ageJohn > ageMark;
 console.log(johnOlder);
 
 // Typeof operator
