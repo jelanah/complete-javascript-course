@@ -73,6 +73,6 @@ console.log(typeof johnOlder);
 console.log(typeof ageJohn);
 var x;
 console.log(typeof x);
-console.log(johnOlder);
-
+console.log(johnOlder); //blahhhhh 
+console.log();
 
