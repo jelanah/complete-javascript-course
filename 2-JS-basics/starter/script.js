@@ -427,7 +427,7 @@ if (john.BMI > mark.BMI){
 //   console.log(i);
 // }
 
-var john = ['John', 'Smith', 1990, 'designer', false];
+// var john = ['John', 'Smith', 1990, 'designer', false];
 
 // for (var i=0; i < john.length; i++) {
 //   console.log(john[i]);
@@ -438,7 +438,7 @@ var john = ['John', 'Smith', 1990, 'designer', false];
 //   console.log(john[i]);
 //   i++;
 // }
-
+/*
 for (var i=0; i < john.length; i++) {
   if (typeof john[i] !== 'string') continue; // doesnt completely break out
   console.log(john[i]);
@@ -447,8 +447,99 @@ for (var i=0; i < john.length; i++) {
 for (var i=0; i < john.length; i++) {
   if (typeof john[i] !== 'string') break; // breaks out completely
   console.log(john[i]);
+}*/
+
+
+// Coding Challendge 5
+
+
+
+
+var john = {
+ 
+  firstName: "John",
+  bills: [124, 48, 268, 180, 42],
+  
+  tipCalc: function() {
+    this.tips = [],
+    this.totalOfBills = [];
+    
+
+    for (i=0; i < this.bills.length; i++) {
+     
+      // determine percentage based on tipping rules
+      var percentage;
+      var bills = this.bills[i];
+
+      if (bills  < 50) {
+        percentage = .2;
+      } else if (bills >= 50 && bills < 200) {
+        percentage = .15;
+      } else {
+        percentage =.1;
+      }
+      
+      // Add results to corresponding arrays
+      this.tips[i] = bills*percentage;
+      this.totalOfBills[i] = this.tips[i] + bills;
+    }
+  }
+};
+
+var mark = {
+ 
+  firstName: "Mark",
+  bills: [77, 475, 110, 45],
+  
+  tipCalc: function() {
+    this.tips = [],
+    this.totalOfBills = [];
+    
+
+    for (i=0; i < this.bills.length; i++) {
+     
+      // determine percentage based on tipping rules
+      var percentage;
+      var bills = this.bills[i];
+
+      if (bills  < 100) {
+        percentage = .2;
+      } else if (bills >= 100 && bills < 300) {
+        percentage = .1;
+      } else {
+        percentage =.25;
+      }
+      
+      // Add results to corresponding arrays
+      this.tips[i] = bills*percentage;
+      this.totalOfBills[i] = this.tips[i] + bills;
+    }
+  }
+};
+
+
+
+function calcAvg(tips) {
+  var sum = 0;
+  for (var i = 0; i < tips.length; i++) {
+    sum = sum + tips[i];
+  } 
+  return sum / tips.length;
+  
 }
 
+// Do all calculations
 
-2dfe39de526cfc94c11d3666c36d6fd4784798bf
+john.tipCalc();
+mark.tipCalc();
+john.average = calcAvg(john.tips);
+mark.average = calcAvg(mark.tips);
+console.log(john, mark);
 
+if (john.average > mark.average) {
+  console.log(john.firstName + '\'s family pays higher tips'
+  + ' with an average of $' + john.average);
+} else {
+  console.log(mark.firstName + '\'s family pays higher tips'
+  + ' with an average of $' + mark.average);
+}
