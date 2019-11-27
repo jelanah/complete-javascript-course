@@ -542,5 +542,4 @@ if (john.average > mark.average) {
 } else {
   console.log(mark.firstName + '\'s family pays higher tips'
   + ' with an average of $' + mark.average);
-  
 }
