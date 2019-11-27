@@ -73,6 +73,7 @@ console.log(typeof johnOlder);
 console.log(typeof ageJohn);
 var x;
 console.log(typeof x);
+<<<<<<< HEAD
 console.log(johnOlder);
 */
 
@@ -448,4 +449,6 @@ for (var i=0; i < john.length; i++) {
   console.log(john[i]);
 }
 
+
+2dfe39de526cfc94c11d3666c36d6fd4784798bf
 
