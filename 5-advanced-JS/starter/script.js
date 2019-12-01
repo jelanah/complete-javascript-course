@@ -16,7 +16,7 @@ var Person = function (name, yearOfBirth, job){
     this.name = name;
     this.yearOfBirth = yearOfBirth;
     this.job = job;
-    }
+    };
 
 var john = new Person ('John', 1990, 'teacher');
 
@@ -203,3 +203,151 @@ function game () {
 })(5); 
 */
 
+/***************************************
+* Closures
+*/
+/*
+function retirement(retirementAge) {
+    var a = ' years left until retirement';
+    return function (yearOfBirth) {
+        var age = 2018-yearOfBirth;
+        console.log((retirementAge - age) + a);
+    };
+}
+var retirementGermany = retirement(60);
+var retirementUS = retirement(66);
+retirementUS(1990);
+
+// or 
+retirement(66)(1990);
+*/
+
+////// Closure Summary
+// An inner function always has ac cess to the variables and parameters
+// of its outer function, even after the outer function returned.
+
+
+////// Rewriting interview function using closures
+/*
+function interviewQuestion(job) {
+    return function(name) {
+        if (job === 'designer'){
+            console.log (name + ', can you please explain what UX dsign is?');
+        } else if (job === 'teacher'){ 
+            console.log (name + ', what do you want to teach?');
+        } else { 
+            console.log (name + ', what do you do?');
+        }
+    }
+}
+
+interviewQuestion('teacher')('John');
+*/
+
+/**************************************
+ * Bind, call and apply
+ */
+/*
+var john = {
+    name: 'John', 
+    age: 26,
+    job: 'teacher',
+    presentation: function(style, timeOfday) {
+        if (style === 'formal') {
+            console.log('Good ' + timeOfday + ', Ladies and Gents.'
+            + ' I\'m ' + this.name + '. I am a ' +
+            this.job +'.');
+        } else if (style === 'friendly'){
+            console.log('Hey, what\'s up. My name is ' + this.name +
+            ' and I am a ' + this.job + '. Have a nice ' + timeOfday +'!');
+        }
+    }
+};
+
+var emily = {
+    name: 'Emily',
+    age: 35,
+    job: 'designer'
+};
+
+///////// Call
+// We can use the call method to utilize another object's method.
+// Use John to call the 'presentation' method for Emily.
+john.presentation('formal', 'morning');
+john.presentation.call(emily, 'friendly', 'afternoon');
+
+///////// Apply 
+// Apply is the same as call except we use an array to pass the arguments instead
+
+//  john.presentation.apply(emily, ['friendly', 'afternoon']); // wont work because function 
+// isnt expecting an array.
+
+
+////////// Bind 
+// Generates a copy of the function
+// saving a fuction based on another function to store preset arguments is 'currying'
+var johnFriendly = john.presentation.bind(john, 'friendly');
+
+johnFriendly('morning');
+
+var emilyFormal = john.presentation.bind(emily, 'formal');
+emilyFormal('evening');
+
+*/
+
+
+/***************************************
+ *  Coding Challenge 7 
+ */
+
+ /*
+
+(function game () {
+Question = function (question, options, correct) {
+    this.question= question;
+    this.options = options;
+    this.correct = correct; 
+    // this.ask = function(this.question,this.options) {
+    //     console.log(this.question);
+    //     for (i=0; i < options.length; i++){
+    //         console.log(options[i]);
+    //     }
+    //  }
+};
+
+Question.prototype.ask = function() {
+    
+    console.log(this.question);
+        for (i=0; i < this.options.length; i++){
+            console.log(i+1 + '. ' + this.options[i]);
+        }
+    var input = prompt(this.question);
+    if (input-1 === this.correct) {
+        console.log('Your answer is correct! Try another question!');
+    } else {
+        console.log('Wrong answer, try another question.')
+    }
+}
+
+var candyQuestion = new Question ('What\'s Jelanah\'s fav candy?',
+    ['Air Heads', 'Hershey\'s', 'Sour Patch Watermelon'], 1);
+
+var movieQuestion = new Question ('What\'s Jelanah\'s fav movie?',
+    ['Taken', 'Friday', 'Non-Stop'], 0);
+
+
+var colorQuestion = new Question ('What\'s Jelanah\'s fav color?',
+    ['Blue', 'Red', 'Black', 'Orange'], 2);
+
+var hobbyQuestion = new Question ('What\'s Jelanah\'s fav hobby?',
+    ['Reading', 'Coding', 'Biking', 'Sewing'], 1);
+
+ 
+var qs = [candyQuestion.ask(), movieQuestion.ask(), colorQuestion.ask(), hobbyQuestion.ask()];
+
+// var rand = Math.floor(Math.random() * qs.length);
+
+// qs[Math.floor(Math.random() * qs.length)];
+})();
+
+*/
