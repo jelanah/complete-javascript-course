@@ -183,27 +183,28 @@ console.log(ages6);
 
 // ES5 
 var box5 = {
-    color: 'green',
-    posotion: 1,
-    clickMe: function() {
-        var self = this;
-        document.querySelector('.green').addEventListener('click', function() {
-            var str = 'This box number is ' +self.posotion + ' and it is ' + self.color;
-            alert(str);
-        });
-    }
+color: 'green',
+posotion: 1,
+clickMe: function() {
+    var self = this;
+    document.querySelector('.green').addEventListener('click', function() {
+        var str = 'This box number is ' +self.posotion + ' and it is ' + self.color;
+        alert(str);
+    });
+}
 };
 box5.clickMe();
 
 
+
 const box6 = {
-    color: 'green',
-    posotion: 1,
-    clickMe: function() {
-        document.querySelector('.green').addEventListener('click',() => {
-            var str = 'This box number is ' +this.posotion + ' and it is ' + this.color;
-            alert(str);
-        });
-    }
+color: 'green',
+posotion: 1,
+clickMe: function() {
+    document.querySelector('.green').addEventListener('click',() => {
+        var str = 'This box number is ' +this.posotion + ' and it is ' + this.color;
+        alert(str);
+    });
+}
 };
 box5.clickMe();
